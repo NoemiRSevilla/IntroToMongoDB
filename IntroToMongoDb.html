@@ -1,0 +1,649 @@
+bash: /Users/IrockMyWarlock/.profile: No such file or directory
+Noemis-MacBook-Pro:dojoSurveyRevisit IrockMyWarlock$ sudo mongod
+Password:
+2019-10-04T13:29:52.814-0500 I CONTROL [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify
+--sslDisabledProtocols 'none'
+2019-10-04T13:29:52.822-0500 I CONTROL [initandlisten] MongoDB starting : pid=1668 port=27017 dbpath=/data/db 64-bit
+host=Noemis-MacBook-Pro.local
+2019-10-04T13:29:52.822-0500 I CONTROL [initandlisten] db version v4.2.0
+2019-10-04T13:29:52.822-0500 I CONTROL [initandlisten] git version: a4b751dcf51dd249c5865812b390cfd1c0129c30
+2019-10-04T13:29:52.822-0500 I CONTROL [initandlisten] allocator: system
+2019-10-04T13:29:52.822-0500 I CONTROL [initandlisten] modules: none
+2019-10-04T13:29:52.822-0500 I CONTROL [initandlisten] build environment:
+2019-10-04T13:29:52.822-0500 I CONTROL [initandlisten] distarch: x86_64
+2019-10-04T13:29:52.822-0500 I CONTROL [initandlisten] target_arch: x86_64
+2019-10-04T13:29:52.823-0500 I CONTROL [initandlisten] options: {}
+2019-10-04T13:29:52.824-0500 E STORAGE [initandlisten] Failed to set up listener: SocketException: Address already in
+use
+2019-10-04T13:29:52.825-0500 I CONTROL [initandlisten] now exiting
+2019-10-04T13:29:52.825-0500 I CONTROL [initandlisten] shutting down with code:48
+Noemis-MacBook-Pro:dojoSurveyRevisit IrockMyWarlock$ mongo
+MongoDB shell version v4.2.0
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("58969731-a709-421e-8dc5-e5f440d78cd3") }
+MongoDB server version: 4.2.0
+Server has startup warnings:
+2019-10-04T13:15:45.597-0500 I CONTROL [initandlisten]
+2019-10-04T13:15:45.598-0500 I CONTROL [initandlisten] ** WARNING: Access control is not enabled for the database.
+2019-10-04T13:15:45.598-0500 I CONTROL [initandlisten] ** Read and write access to data and configuration is
+unrestricted.
+2019-10-04T13:15:45.598-0500 I CONTROL [initandlisten]
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> show dbs
+admin 0.000GB
+config 0.000GB
+local 0.000GB
+> use my_first_db
+switched to db my_first_db
+> db.createCollection("students")
+{ "ok" : 1 }
+> db.students.insert({name: "Jacob", home_state: "Illinois", lucky_number: 19, birthday: {month:9, day:19, year: 2012}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Gretta", home_state: "Colorado", lucky_number: 12, birthday: {month:5, day:11, year:
+2001}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Champion", home_state: "Utah", lucky_number: 65, birthday: {month:12, day:6, year: 1992}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Champion", home_state: "Utah", lucky_number: 65, birthday: {month:12, day:6, year: 1992}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Clark", home_state: "Washington", lucky_number: 7, birthday: {month:8, day:5, year: 1462}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Phil"", home_state: "New York", lucky_number: 23, birthday: {month:2, day:9, year: 4321}})
+2019-10-04T13:46:28.072-0500 E QUERY [js] uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:32
+> db.students.insert({name: "Phil", home_state: "New York", lucky_number: 23, birthday: {month:2, day:9, year: 4321}})
+WriteResult({ "nInserted" : 1 })
+> show dbs
+admin 0.000GB
+config 0.000GB
+local 0.000GB
+my_first_db 0.000GB
+> my_first_db.find()pretty();
+2019-10-04T13:47:13.298-0500 E QUERY [js] uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:18
+> my_first_db.find()pretty()
+2019-10-04T13:47:16.396-0500 E QUERY [js] uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:18
+> db.find().pretty()
+2019-10-04T13:47:28.246-0500 E QUERY [js] uncaught exception: TypeError: db.find is not a function :
+@(shell):1:1
+> db.students.find()pretty()
+2019-10-04T13:47:43.446-0500 E QUERY [js] uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:18
+> db.students.find().pretty()
+{
+"_id" : ObjectId("5d9792e074a52cb5fd5c2261"),
+"name" : "Jacob",
+"home_state" : "Illinois",
+"lucky_number" : 19,
+"birthday" : {
+"month" : 9,
+"day" : 19,
+"year" : 2012
+}
+}
+{
+"_id" : ObjectId("5d97930674a52cb5fd5c2262"),
+"name" : "Gretta",
+"home_state" : "Colorado",
+"lucky_number" : 12,
+"birthday" : {
+"month" : 5,
+"day" : 11,
+"year" : 2001
+}
+}
+{
+"_id" : ObjectId("5d97932874a52cb5fd5c2263"),
+"name" : "Champion",
+"home_state" : "Utah",
+"lucky_number" : 65,
+"birthday" : {
+"month" : 12,
+"day" : 6,
+"year" : 1992
+}
+}
+{
+"_id" : ObjectId("5d97932974a52cb5fd5c2264"),
+"name" : "Champion",
+"home_state" : "Utah",
+"lucky_number" : 65,
+"birthday" : {
+"month" : 12,
+"day" : 6,
+"year" : 1992
+}
+}
+{
+"_id" : ObjectId("5d97935874a52cb5fd5c2265"),
+"name" : "Clark",
+"home_state" : "Washington",
+"lucky_number" : 7,
+"birthday" : {
+"month" : 8,
+"day" : 5,
+"year" : 1462
+}
+}
+{
+"_id" : ObjectId("5d97939174a52cb5fd5c2266"),
+"name" : "Phil",
+"home_state" : "New York",
+"lucky_number" : 23,
+"birthday" : {
+"month" : 2,
+"day" : 9,
+"year" : 4321
+}
+}
+> db.students.remove({id" ObjectId("5d97932874a52cb5fd5c2263")})
+2019-10-04T13:48:53.075-0500 E QUERY [js] uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:22
+> ObjectId("5d97932874a52cb5fd5c2263)
+2019-10-04T13:49:00.732-0500 E QUERY [js] uncaught exception: SyntaxError: "" literal not terminated before end of
+script :
+@(shell):1:35
+> db.students.remove({id: ObjectId("5d97932874a52cb5fd5c2263")})
+WriteResult({ "nRemoved" : 0 })
+> db.students.find().pretty()
+{
+"_id" : ObjectId("5d9792e074a52cb5fd5c2261"),
+"name" : "Jacob",
+"home_state" : "Illinois",
+"lucky_number" : 19,
+"birthday" : {
+"month" : 9,
+"day" : 19,
+"year" : 2012
+}
+}
+{
+"_id" : ObjectId("5d97930674a52cb5fd5c2262"),
+"name" : "Gretta",
+"home_state" : "Colorado",
+"lucky_number" : 12,
+"birthday" : {
+"month" : 5,
+"day" : 11,
+"year" : 2001
+}
+}
+{
+"_id" : ObjectId("5d97932874a52cb5fd5c2263"),
+"name" : "Champion",
+"home_state" : "Utah",
+"lucky_number" : 65,
+"birthday" : {
+"month" : 12,
+"day" : 6,
+"year" : 1992
+}
+}
+{
+"_id" : ObjectId("5d97932974a52cb5fd5c2264"),
+"name" : "Champion",
+"home_state" : "Utah",
+"lucky_number" : 65,
+"birthday" : {
+"month" : 12,
+"day" : 6,
+"year" : 1992
+}
+}
+{
+"_id" : ObjectId("5d97935874a52cb5fd5c2265"),
+"name" : "Clark",
+"home_state" : "Washington",
+"lucky_number" : 7,
+"birthday" : {
+"month" : 8,
+"day" : 5,
+"year" : 1462
+}
+}
+{
+"_id" : ObjectId("5d97939174a52cb5fd5c2266"),
+"name" : "Phil",
+"home_state" : "New York",
+"lucky_number" : 23,
+"birthday" : {
+"month" : 2,
+"day" : 9,
+"year" : 4321
+}
+}
+> db.students.remove({_id: ObjectId("5d97932974a52cb5fd5c2264")})
+WriteResult({ "nRemoved" : 1 })
+> db.students.find().pretty()
+{
+"_id" : ObjectId("5d9792e074a52cb5fd5c2261"),
+"name" : "Jacob",
+"home_state" : "Illinois",
+"lucky_number" : 19,
+"birthday" : {
+"month" : 9,
+"day" : 19,
+"year" : 2012
+}
+}
+{
+"_id" : ObjectId("5d97930674a52cb5fd5c2262"),
+"name" : "Gretta",
+"home_state" : "Colorado",
+"lucky_number" : 12,
+"birthday" : {
+"month" : 5,
+"day" : 11,
+"year" : 2001
+}
+}
+{
+"_id" : ObjectId("5d97932874a52cb5fd5c2263"),
+"name" : "Champion",
+"home_state" : "Utah",
+"lucky_number" : 65,
+"birthday" : {
+"month" : 12,
+"day" : 6,
+"year" : 1992
+}
+}
+{
+"_id" : ObjectId("5d97935874a52cb5fd5c2265"),
+"name" : "Clark",
+"home_state" : "Washington",
+"lucky_number" : 7,
+"birthday" : {
+"month" : 8,
+"day" : 5,
+"year" : 1462
+}
+}
+{
+"_id" : ObjectId("5d97939174a52cb5fd5c2266"),
+"name" : "Phil",
+"home_state" : "New York",
+"lucky_number" : 23,
+"birthday" : {
+"month" : 2,
+"day" : 9,
+"year" : 4321
+}
+}
+> db.students.find({home_state: "Utah"})
+{ "_id" : ObjectId("5d97932874a52cb5fd5c2263"), "name" : "Champion", "home_state" : "Utah", "lucky_number" : 65,
+"birthday" : { "month" : 12, "day" : 6, "year" : 1992 } }
+> db.students.insert({"name": "Jack", "home_state" : "Utah", "lucky_number": 4, "birthday" : {"month": 4, "day" : 5,
+"year" : 4321}}
+...
+... )
+WriteResult({ "nInserted" : 1 })
+> db.students.find({home_state: "Utah"})
+{ "_id" : ObjectId("5d97932874a52cb5fd5c2263"), "name" : "Champion", "home_state" : "Utah", "lucky_number" : 65,
+"birthday" : { "month" : 12, "day" : 6, "year" : 1992 } }
+{ "_id" : ObjectId("5d9794f474a52cb5fd5c2267"), "name" : "Jack", "home_state" : "Utah", "lucky_number" : 4, "birthday" :
+{ "month" : 4, "day" : 5, "year" : 4321 } }
+> db.students.update({"interests": ["coding", "brunch", "MongoDB"]})
+2019-10-04T13:55:14.489-0500 E QUERY [js] uncaught exception: Error: need an update object or pipeline :
+DBCollection.prototype._parseUpdate@src/mongo/shell/collection.js:446:15
+DBCollection.prototype.update@src/mongo/shell/collection.js:492:18
+@(shell):1:1
+> db.students.find().pretty()
+{
+"_id" : ObjectId("5d9792e074a52cb5fd5c2261"),
+"name" : "Jacob",
+"home_state" : "Illinois",
+"lucky_number" : 19,
+"birthday" : {
+"month" : 9,
+"day" : 19,
+"year" : 2012
+}
+}
+{
+"_id" : ObjectId("5d97930674a52cb5fd5c2262"),
+"name" : "Gretta",
+"home_state" : "Colorado",
+"lucky_number" : 12,
+"birthday" : {
+"month" : 5,
+"day" : 11,
+"year" : 2001
+}
+}
+{
+"_id" : ObjectId("5d97932874a52cb5fd5c2263"),
+"name" : "Champion",
+"home_state" : "Utah",
+"lucky_number" : 65,
+"birthday" : {
+"month" : 12,
+"day" : 6,
+"year" : 1992
+}
+}
+{
+"_id" : ObjectId("5d97935874a52cb5fd5c2265"),
+"name" : "Clark",
+"home_state" : "Washington",
+"lucky_number" : 7,
+"birthday" : {
+"month" : 8,
+"day" : 5,
+"year" : 1462
+}
+}
+{
+"_id" : ObjectId("5d97939174a52cb5fd5c2266"),
+"name" : "Phil",
+"home_state" : "New York",
+"lucky_number" : 23,
+"birthday" : {
+"month" : 2,
+"day" : 9,
+"year" : 4321
+}
+}
+{
+"_id" : ObjectId("5d9794f474a52cb5fd5c2267"),
+"name" : "Jack",
+"home_state" : "Utah",
+"lucky_number" : 4,
+"birthday" : {
+"month" : 4,
+"day" : 5,
+"year" : 4321
+}
+}
+>
+
+
+
+
+
+bash: /Users/IrockMyWarlock/.profile: No such file or directory
+Noemis-MacBook-Pro:~ IrockMyWarlock$ mongo my_first_db
+MongoDB shell version v4.2.0
+connecting to: mongodb://127.0.0.1:27017/my_first_db?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("6ec5a33d-2511-4e20-b330-bb039f31ce2a") }
+MongoDB server version: 4.2.0
+Server has startup warnings:
+2019-10-04T13:15:45.597-0500 I CONTROL [initandlisten]
+2019-10-04T13:15:45.598-0500 I CONTROL [initandlisten] ** WARNING: Access control is not enabled for the database.
+2019-10-04T13:15:45.598-0500 I CONTROL [initandlisten] ** Read and write access to data and configuration is
+unrestricted.
+2019-10-04T13:15:45.598-0500 I CONTROL [initandlisten]
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> db.students.find().pretty()
+{
+"_id" : ObjectId("5d9792e074a52cb5fd5c2261"),
+"name" : "Jacob",
+"home_state" : "Illinois",
+"lucky_number" : 19,
+"birthday" : {
+"month" : 9,
+"day" : 19,
+"year" : 2012
+}
+}
+{
+"_id" : ObjectId("5d97930674a52cb5fd5c2262"),
+"name" : "Gretta",
+"home_state" : "Colorado",
+"lucky_number" : 12,
+"birthday" : {
+"month" : 5,
+"day" : 11,
+"year" : 2001
+}
+}
+{
+"_id" : ObjectId("5d97932874a52cb5fd5c2263"),
+"name" : "Champion",
+"home_state" : "Utah",
+"lucky_number" : 65,
+"birthday" : {
+"month" : 12,
+"day" : 6,
+"year" : 1992
+}
+}
+{
+"_id" : ObjectId("5d97935874a52cb5fd5c2265"),
+"name" : "Clark",
+"home_state" : "Washington",
+"lucky_number" : 7,
+"birthday" : {
+"month" : 8,
+"day" : 5,
+"year" : 1462
+}
+}
+{
+"_id" : ObjectId("5d97939174a52cb5fd5c2266"),
+"name" : "Phil",
+"home_state" : "New York",
+"lucky_number" : 23,
+"birthday" : {
+"month" : 2,
+"day" : 9,
+"year" : 4321
+}
+}
+{
+"_id" : ObjectId("5d9794f474a52cb5fd5c2267"),
+"name" : "Jack",
+"home_state" : "Utah",
+"lucky_number" : 4,
+"birthday" : {
+"month" : 4,
+"day" : 5,
+"year" : 4321
+}
+}
+> db.students.update({$set:{ "interests": ["coding", "brunch", "mongoDB"]}})
+2019-10-04T14:19:15.590-0500 E QUERY [js] uncaught exception: Error: need an update object or pipeline :
+DBCollection.prototype._parseUpdate@src/mongo/shell/collection.js:446:15
+DBCollection.prototype.update@src/mongo/shell/collection.js:492:18
+@(shell):1:1
+> db.students.update({$set:{ "interests": ["coding", "brunch", "mongoDB"]}}, false)
+2019-10-04T14:19:55.535-0500 E QUERY [js] uncaught exception: Error: need an update object or pipeline :
+DBCollection.prototype._parseUpdate@src/mongo/shell/collection.js:446:15
+DBCollection.prototype.update@src/mongo/shell/collection.js:492:18
+@(shell):1:1
+> db.students.update({},{$set:{ "interests": ["coding", "brunch", "mongoDB"]}}, false)
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.find().pretty()
+{
+"_id" : ObjectId("5d9792e074a52cb5fd5c2261"),
+"name" : "Jacob",
+"home_state" : "Illinois",
+"lucky_number" : 19,
+"birthday" : {
+"month" : 9,
+"day" : 19,
+"year" : 2012
+},
+"interests" : [
+"coding",
+"brunch",
+"mongoDB"
+]
+}
+{
+"_id" : ObjectId("5d97930674a52cb5fd5c2262"),
+"name" : "Gretta",
+"home_state" : "Colorado",
+"lucky_number" : 12,
+"birthday" : {
+"month" : 5,
+"day" : 11,
+"year" : 2001
+}
+}
+{
+"_id" : ObjectId("5d97932874a52cb5fd5c2263"),
+"name" : "Champion",
+"home_state" : "Utah",
+"lucky_number" : 65,
+"birthday" : {
+"month" : 12,
+"day" : 6,
+"year" : 1992
+}
+}
+{
+"_id" : ObjectId("5d97935874a52cb5fd5c2265"),
+"name" : "Clark",
+"home_state" : "Washington",
+"lucky_number" : 7,
+"birthday" : {
+"month" : 8,
+"day" : 5,
+"year" : 1462
+}
+}
+{
+"_id" : ObjectId("5d97939174a52cb5fd5c2266"),
+"name" : "Phil",
+"home_state" : "New York",
+"lucky_number" : 23,
+"birthday" : {
+"month" : 2,
+"day" : 9,
+"year" : 4321
+}
+}
+{
+"_id" : ObjectId("5d9794f474a52cb5fd5c2267"),
+"name" : "Jack",
+"home_state" : "Utah",
+"lucky_number" : 4,
+"birthday" : {
+"month" : 4,
+"day" : 5,
+"year" : 4321
+}
+}
+> db.students.updateMany({},{$set:{ "interests": ["coding", "brunch", "mongoDB"]}}, false)
+{ "acknowledged" : true, "matchedCount" : 6, "modifiedCount" : 5 }
+> db.students.find().pretty()
+{
+"_id" : ObjectId("5d9792e074a52cb5fd5c2261"),
+"name" : "Jacob",
+"home_state" : "Illinois",
+"lucky_number" : 19,
+"birthday" : {
+"month" : 9,
+"day" : 19,
+"year" : 2012
+},
+"interests" : [
+"coding",
+"brunch",
+"mongoDB"
+]
+}
+{
+"_id" : ObjectId("5d97930674a52cb5fd5c2262"),
+"name" : "Gretta",
+"home_state" : "Colorado",
+"lucky_number" : 12,
+"birthday" : {
+"month" : 5,
+"day" : 11,
+"year" : 2001
+},
+"interests" : [
+"coding",
+"brunch",
+"mongoDB"
+]
+}
+{
+"_id" : ObjectId("5d97932874a52cb5fd5c2263"),
+"name" : "Champion",
+"home_state" : "Utah",
+"lucky_number" : 65,
+"birthday" : {
+"month" : 12,
+"day" : 6,
+"year" : 1992
+},
+"interests" : [
+"coding",
+"brunch",
+"mongoDB"
+]
+}
+{
+"_id" : ObjectId("5d97935874a52cb5fd5c2265"),
+"name" : "Clark",
+"home_state" : "Washington",
+"lucky_number" : 7,
+"birthday" : {
+"month" : 8,
+"day" : 5,
+"year" : 1462
+},
+"interests" : [
+"coding",
+"brunch",
+"mongoDB"
+]
+}
+{
+"_id" : ObjectId("5d97939174a52cb5fd5c2266"),
+"name" : "Phil",
+"home_state" : "New York",
+"lucky_number" : 23,
+"birthday" : {
+"month" : 2,
+"day" : 9,
+"year" : 4321
+},
+"interests" : [
+"coding",
+"brunch",
+"mongoDB"
+]
+}
+{
+"_id" : ObjectId("5d9794f474a52cb5fd5c2267"),
+"name" : "Jack",
+"home_state" : "Utah",
+"lucky_number" : 4,
+"birthday" : {
+"month" : 4,
+"day" : 5,
+"year" : 4321
+},
+"interests" : [
+"coding",
+"brunch",
+"mongoDB"
+]
+}
